@@ -4,12 +4,13 @@ import './App.css';
 import List from './List';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faCircle  } from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, faCircle, faListAlt  } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faCheckCircle);
 library.add(faCircle);
 library.add(faTimes);
+library.add(faListAlt);
 
 
 
@@ -68,21 +69,23 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <FontAwesomeIcon icon={["far", "list-alt"]} size="5x" color="lightskyblue"/>
+          <h1>To Do List</h1>
         </header>
-        <h1>
-          To Do List
-        </h1>
+        <div id='div-list'>
+        <h2>
+          Manage Your List
+        </h2>
         <form>
           <label>Enter Your To Do Item: </label>
           <input value={this.state.item} onChange={this.itemChange} />
-          <button onClick={this.addItem}>Add Item</button>
+          <button id='add-button' onClick={this.addItem}>Add Item</button>
         </form>
         <div>
           <List list={this.state.list} done={this.checkItem} delete={this.deleteItem}/>
           </div>
 
+       </div>
       </div>
     );
   }
