@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import List from './List';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faCircle  } from '@fortawesome/free-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCheckCircle);
+library.add(faCircle);
+library.add(faTimes);
+
+
+
 
 class App extends Component {
   constructor (props) {
@@ -17,14 +28,40 @@ class App extends Component {
   }
 
   addItem = (e) => {
+    var newItem = {
+      todo: this.state.item,
+      done: false
+    };
+
     this.setState(
       {
-        list: [...this.state.list, this.state.item],
+        list: [...this.state.list, newItem],
         item: ""
       }
     );
 
     e.preventDefault();
+  }
+
+  checkItem = (index) => {
+      const newList = this.state.list.slice();
+      newList[index].done = !newList[index].done;
+      this.setState(
+        {
+         list: newList 
+        }
+      );
+  }
+
+
+  deleteItem = (index) => {
+    const newList = this.state.list.slice();
+    newList.splice(index, 1);
+    this.setState(
+      {
+        list: newList
+      }
+    )
   }
 
   render() {
@@ -43,8 +80,9 @@ class App extends Component {
           <button onClick={this.addItem}>Add Item</button>
         </form>
         <div>
-          <List list={this.state.list}/>
+          <List list={this.state.list} done={this.checkItem} delete={this.deleteItem}/>
           </div>
+
       </div>
     );
   }
