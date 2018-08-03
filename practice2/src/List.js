@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const List = (props) => {
     
    return (
-   <ul>
+   <ul id='ul-list'>
         {props.list.map((item, index) => 
             (<li className='list-item' key={index}>
             <span className='item1'>{index + 1}</span>

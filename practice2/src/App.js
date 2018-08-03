@@ -77,7 +77,7 @@ class App extends Component {
           Manage Your List
         </h2>
         <form>
-          <label>Enter Your To Do Item: </label>
+          <label id="todo-label">To Do Item: </label>
           <input value={this.state.item} onChange={this.itemChange} />
           <button id='add-button' onClick={this.addItem}>Add Item</button>
         </form>
