@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const List = (props) => {
-    //const todo = props.list;
+    
    return (
    <ul>
         {props.list.map((item, index) => 
